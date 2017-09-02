@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>gathr-events demo</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../gathr-events.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+       gathr-events{
+         
+        --gathr-events-container:{
+
+          }
+          --gathr-events-img:{
+
+          }
+          --gathr-events-title:{
+
+          }
+          --gathr-events-map-btn:{
+
+          }
+          --gathr-events-date:{
+
+          }
+          --gathr-events-time:{
+
+          }
+          --gathr-events-tickets-btn:{
+
+          }
+          a:hover --gathr-events-tickets-btn:{
+
+          }
+          --gathr-events-marketing-btn:{
+
+          }
+          --gathr-events-notes:{
+
+          }
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic gathr-events demo</h3>
+      <demo-snippet>
+        <template>
+          <gathr-events token="ada4245cae677706fc38a0d410653d10419a2a77" ></gathr-events>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

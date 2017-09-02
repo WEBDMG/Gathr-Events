@@ -1,0 +1,20 @@
+{
+  "name": "gathr-events",
+  "description": "WEBDMG Gathr Events web-component.",
+  "main": "gathr-events.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "iron-ajax ": "latest",
+    "moment": "^2.18.1",
+    "bootstrap": "v4.0.0-beta",
+    "iron-collapse":"latest"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}

@@ -1,0 +1,128 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+
+<!-- Import the styles from the style module my-styles -->
+<link rel="import" href="my-styles.html">
+<link rel="import" href="my-scripts.html">
+<link rel="import" href="bower_components/iron-collapse/iron-collapse.html">
+<dom-module id="gathr-events">
+    <template>
+         <!-- Include the imported styles from my-colors -->
+        <style include="my-styles"></style>
+          <style is="custom-style">
+              .events-container{
+                  @apply(--gathr-events-container);
+              }
+              .events-title{
+                  @apply(--gathr-events-title);
+              }
+              .events-map-btn{
+                  @apply(--gathr-events-map-btn);
+              }
+              .events-date{
+                  @apply(--gathr-events-date);
+              }
+              .events-time{
+                  @apply(--gathr-events-time);
+              }
+              .events-tickets-btn{
+                @apply(--gathr-events-tickets-btn);
+              }
+              .events-marketing-btn{
+                  @apply(--gathr-events-marketing-btn);
+              }
+              .events-img{
+                  @apply(--gathr-events-img);
+              }
+              .events-notes{
+                @apply(--gathr-events-notes);
+              }
+              
+          </style>
+        <div class="container-fluid">
+            <div class="row">
+        <template is="dom-repeat" items="[[events]]">
+        <div class="col-xs-12 col-md-4 col-lg-3" >
+          <div class="events-container card " style="min-height:30rem; margin-bottom:10px; max-height:40rem;overflow:hidden;">
+            <!--img class="events-img card-img-top img-fluid" src="{{item.image}}" alt="" /-->
+            <div class="card-body">
+                    <h2 class="events-title card-text">{{item.venuename}}</h2><hr/>
+            
+                        <p class="events-notes card-text">{{item.notes}}</p>
+           
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="events-map-btn,card-link" href="https://www.google.com/maps/place/{{item.address}}" target="_blank">
+                        {{item.address}}
+                    </a>
+                </li>
+                <li class="events-date list-group-item">Date: {{item.date}}</li>
+                <li class="events-time list-group-item">Time: {{item.time}}</li>
+            </ul>
+
+            <div class="card-body">
+                <template is="dom-if" if="{{hasTicketLink(item)}}">
+                    <a class="events-tickets-btn card-link" href="{{item.ticketlink}}" target="_blank">Get Tickets</a>
+                </template>
+                <template is="dom-if" if="{{hasMarketingLink(item)}}">
+                    <a class="events-marketing-btn card-link" href="{{item.marketinglink}}" target="_blank">More Info</a>
+                </template>
+                </div>
+          </div>
+        </div>
+          </template>
+          
+        </div>
+        </div>
+        </div>
+
+        <iron-ajax
+            id="requestOccassion"
+            url="http://api.gathr.me/v4/event/events/token/{{token}}"
+            params='{"X-API-KEY":"d033e22ae348aeb5660fc2140aec35850c4da997"}'
+            handle-as="json"
+            on-response="handleResponse">
+        </iron-ajax>
+    </template>
+ 
+    <script>
+        Polymer({
+            is: 'gathr-events',
+            properties: {
+                token: String,
+                occassion: {
+                    type: Array
+                }
+            },
+            ready: function () {
+                this.$.requestOccassion.generateRequest();
+            },
+            handleResponse: function (data) {
+                this.occassion = data.detail.response;
+                this.events = []
+                this.occassion.events.forEach(function(element) {
+                    element.date = moment(element.date).format('MMMM D, YYYY').toString()
+                    var dateString = moment(element.date +' '+ element.time,'MMMM D, YYYY hh:mm:ss a')
+                    element.time = moment(dateString).format('LT')
+                    element.notes = element.notes.substr(0,140)
+                    element.venuename = element.venuename.toUpperCase()
+                    this.events.push(element)
+                }, this);
+                
+            },
+            hasTicketLink: function (item){
+                if(item.ticketlink != "") {
+                        return true 
+                    }
+                return false
+            },
+            hasMarketingLink: function (item){
+                if(item.marketinglink != "") {
+                        return true 
+                    }
+                return false
+            }
+        });
+</script>
+
+</dom-module>
