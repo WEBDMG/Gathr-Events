@@ -79,7 +79,7 @@
         <iron-ajax
             id="requestOccassion"
             url="http://api.gathr.me/v4/event/events/token/{{token}}"
-            params='{"X-API-KEY":"d033e22ae348aeb5660fc2140aec35850c4da997"}'
+            params='{"X-API-KEY":"3725c5c088c7b235550f85223687031a2356aae6"}'
             handle-as="json"
             on-response="handleResponse">
         </iron-ajax>
@@ -89,7 +89,7 @@
         Polymer({
             is: 'gathr-events',
             properties: {
-                token: String,
+                pm: String,
                 occassion: {
                     type: Array
                 }

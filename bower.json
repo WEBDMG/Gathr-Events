@@ -1,12 +1,11 @@
 {
-  "name": "gathr-events",
+  "name": "Gathr-Events",
   "description": "WEBDMG Gathr Events web-component.",
-  "main": "gathr-events.html",
+  "main": "Gathr-Events.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-ajax ": "latest",
     "moment": "^2.18.1",
-    "bootstrap": "v4.0.0-beta",
     "iron-collapse":"latest"
   },
   "devDependencies": {
