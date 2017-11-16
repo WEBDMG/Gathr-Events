@@ -6,7 +6,8 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-ajax ": "latest",
     "moment": "^2.18.1",
-    "iron-collapse":"latest"
+    "iron-collapse":"latest",
+    "Gathr-Events": "WEBDMG/Gathr-Events"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
@@ -14,6 +15,7 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "resolutions": {
-    "polymer": "^2.0.0"
+    "polymer": "^2.0.0",
+    "Gathr-Events": "WEBDMG/Gathr-Events"
   }
 }
